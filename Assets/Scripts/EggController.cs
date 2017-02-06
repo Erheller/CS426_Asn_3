@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class EggController : MonoBehaviour {
 
 	private Rigidbody rb;
 	// Use this for initialization
@@ -19,7 +19,7 @@ public class NewBehaviourScript : MonoBehaviour {
 	{
 		if(other.gameObject.CompareTag("Ground"))
 		{
-			Destroy (other.gameObject);
+			Destroy (this.gameObject);
 		}
 	}
 }
