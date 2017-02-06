@@ -41,4 +41,6 @@ public class JoeController : MonoBehaviour {
 		if (agent.remainingDistance < 0.5f)
 			GotoNextPoint();
 	}
+
+
 }
