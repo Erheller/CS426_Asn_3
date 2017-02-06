@@ -21,5 +21,16 @@ public class EggController : MonoBehaviour {
 		{
 			Destroy (this.gameObject);
 		}
+
+        if (other.gameObject.CompareTag("Joe"))
+        {
+            Destroy(this.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Egg"))
+        {
+            Physics.IgnoreCollision(this.GetComponent<Collider>(), other);
+        }
 	}
 }
+
