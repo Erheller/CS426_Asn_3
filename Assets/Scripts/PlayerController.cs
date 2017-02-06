@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			//egg creation here
-			Vector3 player_front = new Vector3(this.transform.position.x + 3, this.transform.position.y, this.transform.position.z);
+			Vector3 player_front = new Vector3(this.transform.position.x + 1, this.transform.position.y, this.transform.position.z);
 
 
 			GameObject.Instantiate((GameObject)Resources.Load(this.eggArray[this.index]), /*this.transform.position*/player_front, this.transform.rotation);
