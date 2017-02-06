@@ -68,9 +68,10 @@ public class PlayerController : MonoBehaviour {
 
 
 
-		if (Input.GetKey (KeyCode.Space)) {
+		if (Input.GetKeyDown (KeyCode.Space)) {
 			//egg creation here
-			GameObject.Instantiate((GameObject)Resources.Load(this.eggArray[this.index]));
+
+			GameObject.Instantiate((GameObject)Resources.Load(this.eggArray[this.index]), this.transform.position, this.transform.rotation);
 		}
 
 	}
