@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetKey (KeyCode.UpArrow)) {
+		if (Input.GetKeyDown (KeyCode.UpArrow)) {
 			if (this.index == this.numEggs - 1)
 				this.index = 0;
 			else
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour {
 
 		}
 
-		if (Input.GetKey (KeyCode.DownArrow)) {
+		if (Input.GetKeyDown (KeyCode.DownArrow)) {
 			if (this.index == 0)
 				this.index = this.numEggs - 1;
 			else
