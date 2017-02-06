@@ -12,12 +12,15 @@ public class GroundController : MonoBehaviour {
 	void Update () {
 		
 	}
-
+    /*
 	void OnTriggerEnter(Collider other)
 	{
-		if(other.gameObject.CompareTag("Egg"))
-		{
-			Destroy (other.gameObject);
-		}
+        	if(other.gameObject.CompareTag("Egg"))
+            {
+                Destroy (other.gameObject);
+            }
+        
+        //Destroy(other.gameObject);
 	}
+*/
 }
