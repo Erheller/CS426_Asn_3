@@ -112,6 +112,7 @@ public class GameController : MonoBehaviour {
 	public void nextDay() {
 		this.secondsLeft = this.secondsPerDay;
 		this.shopping = false;
+		this.day += 1;
 		UIController.hidePaused();
 	}
 
