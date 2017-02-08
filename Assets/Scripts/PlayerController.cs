@@ -50,11 +50,11 @@ public class PlayerController : MonoBehaviour {
 		return this.numEggArray [eggID];
 	}
 
-	void addEgg(int eggID, int num) {
+	public void addEgg(int eggID, int num) {
 		this.numEggArray[eggID] += num;
 	}
 
-	void removeEgg(int eggID, int num) {
+	public void removeEgg(int eggID, int num) {
 		this.numEggArray[eggID] -= num;
 		if (this.numEggArray[eggID] < 0)
 			this.numEggArray[eggID] = 0;

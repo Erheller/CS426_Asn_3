@@ -10,7 +10,6 @@ public class GameController : MonoBehaviour {
 	public bool shopping;
 
 	private float secondsLeft;
-	public PlayerController playerObject; 
 	public Text UI_day;
 	public Text UI_money;
 	public Text UI_reg;
@@ -18,6 +17,15 @@ public class GameController : MonoBehaviour {
 	public Text UI_ost;
 	public Text UI_rot;
 
+	public PlayerController playerObject; 
+	public UIManager UIController;
+
+	public int egg0cost = 20;
+	public int egg1cost = 50;
+	public int egg2cost = 100;
+	public int egg3cost = 120;
+
+	public int eggsPerBuy = 5;
 
 	// Use this for initialization
 	void Start () {
@@ -64,7 +72,39 @@ public class GameController : MonoBehaviour {
 			break;
 		}
 	}
-	
+
+	public void buyEgg0() {
+		if (this.money < this.egg0cost)
+			return;
+
+		this.money -= this.egg0cost;
+		playerObject.addEgg (0, eggsPerBuy);
+	}
+
+	public void buyEgg1() {
+		if (this.money < this.egg1cost)
+			return;
+
+		this.money -= this.egg1cost;
+		playerObject.addEgg (1, eggsPerBuy);
+	}
+
+	public void buyEgg2() {
+		if (this.money < this.egg2cost)
+			return;
+
+		this.money -= this.egg2cost;
+		playerObject.addEgg (2, eggsPerBuy);
+	}
+
+	public void buyEgg3() {
+		if (this.money < this.egg3cost)
+			return;
+
+		this.money -= this.egg3cost;
+		playerObject.addEgg (3, eggsPerBuy);
+	}
+
 	// Update is called once per frame
 	void Update () {
 		this.updateUI ();
