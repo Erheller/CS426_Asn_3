@@ -16,10 +16,10 @@ public class PlayerController : MonoBehaviour {
 		eggArray = new string[numEggs];
 		numEggArray = new int[numEggs];
 
-		eggArray [0] = "p_egg";
-		eggArray [1] = "p_egg_organic";
-		eggArray [2] = "p_egg_ostrich";
-		eggArray [3] = "p_egg_rotten";
+		eggArray [0] = "m_egg";
+		eggArray [1] = "m_egg_organic";
+		eggArray [2] = "m_egg_ostrich";
+		eggArray [3] = "m_egg_rotten";
 
 		numEggArray [0] = 10;
 		numEggArray [1] = 10;
