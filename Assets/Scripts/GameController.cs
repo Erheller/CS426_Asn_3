@@ -33,7 +33,7 @@ public class GameController : MonoBehaviour {
 		this.secondsPerDay = 10;	//change this for final release!
 		this.money = 10000;			//and this!
 		this.day = 0;
-		this.shopping = false;
+		this.shopping = true;
 		this.secondsLeft = 0;
 
 		DontDestroyOnLoad (this);
@@ -46,13 +46,15 @@ public class GameController : MonoBehaviour {
 	}
 
 	void updateUI() {
+		float tempTime = Mathf.Round (this.secondsLeft * 100f) / 100f;
 		UI_day.text = "Day: " + this.day.ToString ();
 		UI_money.text = "ANARCHY POINTS: " + this.money.ToString ();
 		UI_reg.text = "Regular Eggs: " + playerObject.getNumEggs (0).ToString ();
 		UI_org.text = "Organic Eggs: " + playerObject.getNumEggs (1).ToString ();
 		UI_ost.text = "Ostrich Eggs: " + playerObject.getNumEggs (2).ToString ();
 		UI_rot.text = "Rotten Eggs: " + playerObject.getNumEggs (3).ToString ();
-		UI_time.text = "Time: " + this.secondsLeft.ToString ();
+		//UI_time.text = "Time: " + this.secondsLeft.ToString ();
+		UI_time.text = "Time: " + tempTime.ToString ();
 
 		int tempIndex = playerObject.getIndex ();
 		UI_reg.color = Color.black;
@@ -110,11 +112,20 @@ public class GameController : MonoBehaviour {
 	public void nextDay() {
 		this.secondsLeft = this.secondsPerDay;
 		this.shopping = false;
+		this.day += 1;
 		UIController.hidePaused();
 	}
 
 	// Update is called once per frame
 	void Update () {
+		/*
+		if (this.secondsLeft >= 0)
+			this.shopping = false;
+		else
+			this.shopping = true;
+		*/
+
+
 		if (shopping == false) {
 			this.secondsLeft -= Time.deltaTime;
 			if (this.secondsLeft <= 0) {
