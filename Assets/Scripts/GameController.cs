@@ -77,6 +77,10 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	public void addScore(int toAdd) {
+		this.money += toAdd;
+	}
+
 	public void buyEgg0() {
 		if (this.money < this.egg0cost)
 			return;

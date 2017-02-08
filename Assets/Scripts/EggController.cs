@@ -5,8 +5,16 @@ using UnityEngine;
 public class EggController : MonoBehaviour {
 
 	private Rigidbody rb;
+	public GameObject GO;
+	public GameController GC;
+
 	// Use this for initialization
 	void Start () {
+		//GC = GameObject.FindGameObjectWithTag ("GameController");
+
+		GO = GameObject.FindGameObjectWithTag ("GameController");
+		GC = GO.GetComponent<GameController> ();
+
 		rb = GetComponent<Rigidbody>();
 	}
 	
@@ -25,6 +33,7 @@ public class EggController : MonoBehaviour {
         if (other.gameObject.CompareTag("avgjoe"))
         {
             Destroy(this.gameObject);
+			GC.addScore (111);
         }
 
         if (other.gameObject.CompareTag("Egg"))
