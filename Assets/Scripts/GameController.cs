@@ -10,22 +10,31 @@ public class GameController : MonoBehaviour {
 	public bool shopping;
 
 	private float secondsLeft;
-	public PlayerController playerObject; 
 	public Text UI_day;
 	public Text UI_money;
 	public Text UI_reg;
 	public Text UI_org;
 	public Text UI_ost;
 	public Text UI_rot;
+	public Text UI_time;
 
+	public PlayerController playerObject; 
+	public UIManager UIController;
+
+	public int egg0cost = 20;
+	public int egg1cost = 50;
+	public int egg2cost = 100;
+	public int egg3cost = 120;
+
+	public int eggsPerBuy = 5;
 
 	// Use this for initialization
 	void Start () {
-		this.secondsPerDay = 90;
-		this.money = 10000;
+		this.secondsPerDay = 10;	//change this for final release!
+		this.money = 10000;			//and this!
 		this.day = 0;
 		this.shopping = false;
-		this.secondsLeft = this.secondsPerDay;
+		this.secondsLeft = 0;
 
 		DontDestroyOnLoad (this);
 
@@ -43,6 +52,7 @@ public class GameController : MonoBehaviour {
 		UI_org.text = "Organic Eggs: " + playerObject.getNumEggs (1).ToString ();
 		UI_ost.text = "Ostrich Eggs: " + playerObject.getNumEggs (2).ToString ();
 		UI_rot.text = "Rotten Eggs: " + playerObject.getNumEggs (3).ToString ();
+		UI_time.text = "Time: " + this.secondsLeft.ToString ();
 
 		int tempIndex = playerObject.getIndex ();
 		UI_reg.color = Color.black;
@@ -64,9 +74,69 @@ public class GameController : MonoBehaviour {
 			break;
 		}
 	}
-	
+
+	public void buyEgg0() {
+		if (this.money < this.egg0cost)
+			return;
+
+		this.money -= this.egg0cost;
+		playerObject.addEgg (0, eggsPerBuy);
+	}
+
+	public void buyEgg1() {
+		if (this.money < this.egg1cost)
+			return;
+
+		this.money -= this.egg1cost;
+		playerObject.addEgg (1, eggsPerBuy);
+	}
+
+	public void buyEgg2() {
+		if (this.money < this.egg2cost)
+			return;
+
+		this.money -= this.egg2cost;
+		playerObject.addEgg (2, eggsPerBuy);
+	}
+
+	public void buyEgg3() {
+		if (this.money < this.egg3cost)
+			return;
+
+		this.money -= this.egg3cost;
+		playerObject.addEgg (3, eggsPerBuy);
+	}
+
+	public void nextDay() {
+		this.secondsLeft = this.secondsPerDay;
+		this.shopping = false;
+		UIController.hidePaused();
+	}
+
 	// Update is called once per frame
 	void Update () {
+		if (shopping == false) {
+			this.secondsLeft -= Time.deltaTime;
+			if (this.secondsLeft <= 0) {
+				secondsLeft = 0;
+				this.shopping = true;
+				UIController.showPaused ();
+
+
+				/*
+				 * 
+				 * KILL
+				 * ALL
+				 * ENEMIES
+				 * 
+				 * 
+				 * /
+				*/
+
+
+			}
+		}
+
 		this.updateUI ();
 
 
