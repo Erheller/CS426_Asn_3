@@ -22,7 +22,7 @@ public class EggController : MonoBehaviour {
 			Destroy (this.gameObject);
 		}
 
-        if (other.gameObject.CompareTag("Joe"))
+        if (other.gameObject.CompareTag("avgjoe"))
         {
             Destroy(this.gameObject);
         }

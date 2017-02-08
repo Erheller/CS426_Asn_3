@@ -10,8 +10,6 @@ public class PlayerController : MonoBehaviour {
 	private int numEggs = 4;
 	private int index;
 
-	public GameController GC;
-
 
 	// Use this for initialization
 	void Start () {
@@ -111,10 +109,20 @@ public class PlayerController : MonoBehaviour {
 		}
 
 
-		if (GC.shopping == false) {
-			if (Input.GetKeyDown (KeyCode.Space)) {
-				dropEgg (this.index);
-			}
+
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			dropEgg (this.index);
+
+			/*
+			if (canDropEgg (this.index) == false)
+				return;
+
+			//egg creation here
+			Vector3 player_front = new Vector3(this.transform.position.x + 1, this.transform.position.y, this.transform.position.z);
+
+
+			GameObject.Instantiate((GameObject)Resources.Load(this.eggArray[this.index]), player_front, this.transform.rotation);
+			*/
 		}
 
 	}
