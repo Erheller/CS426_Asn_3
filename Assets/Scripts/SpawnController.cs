@@ -49,6 +49,7 @@ public class SpawnController : MonoBehaviour {
         // Find gameobject with tag GameController
         GO = GameObject.FindGameObjectWithTag("GameController");
         GC = GO.GetComponent<GameController>();
+		Instantiate (avgJoe, new Vector3(-2,0,-6), Quaternion.identity);
 
         if (GC.day == 0) {
             joeMax = 5;
