@@ -41,8 +41,14 @@ public class SpawnController : MonoBehaviour {
 
         joeCounter++;
 		//if (joeCounter >= joeMax)
-		//	CancelInvoke ("Spawn");
+			//stopSpawning(
 	}
+
+    void stopSpawning()
+    {
+        // 
+        CancelInvoke("Spawn");
+    }
 
 	// Use this for initialization
 	void Start () {
