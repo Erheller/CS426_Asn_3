@@ -28,16 +28,16 @@ public class SpawnController : MonoBehaviour {
 
         // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
 
-        int r = Random.Range(0,2);
+        int r = Random.Range(0,3);
         if(r == 0 )
             Instantiate(avgJoe, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
         /*if(r == 1)
             Instantiate(wizardJoe, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
      */    
-    if (r == 1)
+    	if (r == 1)
             Instantiate(hipsterJoe, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
-        if (r == 2)
-            Instantiate(skateJoe, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+    	if (r == 2)
+        	Instantiate(skateJoe, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
 
         joeCounter++;
 		//if (joeCounter >= joeMax)
