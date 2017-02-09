@@ -87,11 +87,11 @@ public class PlayerController : MonoBehaviour {
 
 		if (direction != 0) {
 			if (direction == 1) {
-				transform.Translate (this.transform.forward * Time.deltaTime);
+				transform.Translate (this.transform.forward * Time.deltaTime *speed);
 			} 
 
 			else {
-				transform.Translate (this.transform.forward * -1 * Time.deltaTime);
+				transform.Translate (this.transform.forward * -1 * Time.deltaTime * speed);
 			}
 		}
 
