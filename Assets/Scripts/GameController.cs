@@ -30,8 +30,8 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		this.secondsPerDay = 10;	//change this for final release!
-		this.money = 10000;			//and this!
+		this.secondsPerDay = 60;	//change this for final release!
+		this.money = 100;			//and this!
 		this.day = 0;
 		this.shopping = true;
 		this.secondsLeft = 0;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EggController : MonoBehaviour {
+public class EggRottenController : MonoBehaviour {
 
 	private Rigidbody rb;
 	public GameObject GO;
@@ -17,10 +17,10 @@ public class EggController : MonoBehaviour {
 
 		rb = GetComponent<Rigidbody>();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -28,42 +28,47 @@ public class EggController : MonoBehaviour {
 		if (other.gameObject.CompareTag("Egg"))
 		{
 			Physics.IgnoreCollision(this.GetComponent<Collider>(), other);
+			return;
 		}
-			
+
+		GameObject.Instantiate((GameObject)Resources.Load("p_rotten_exp"), this.transform.position, this.transform.rotation);
+
+		Destroy (this.gameObject);
+
+
+
+
+
+
 
 		if(other.gameObject.CompareTag("Ground"))
 		{
 			Destroy (this.gameObject);
-			//return;
+			return;
 		}
 
-        if (other.gameObject.CompareTag("avgjoe"))
-        {
+		if (other.gameObject.CompareTag("avgjoe"))
+		{
 			if (this.gameObject.CompareTag ("orgo"))
 				GC.addScore (50);
 			else
 				GC.addScore (10);
 			Destroy(this.gameObject);
-			Destroy (other.gameObject);
-			//return;
-        }
+			return;
+		}
 
 		if (other.gameObject.CompareTag("hipjoe"))
 		{
 			Destroy(this.gameObject);
 			GC.addScore (10);
-			Destroy (other.gameObject);
-
-			//return;
+			return;
 		}
 
 		if (other.gameObject.CompareTag("skatejoe"))
 		{
 			Destroy(this.gameObject);
 			GC.addScore (30);
-			Destroy (other.gameObject);
-
-			//return;
+			return;
 		}
 
 
