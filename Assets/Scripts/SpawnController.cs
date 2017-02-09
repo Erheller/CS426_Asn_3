@@ -15,6 +15,7 @@ public class SpawnController : MonoBehaviour {
 	private int joeCounter = 0;
 	private int joeMax;
    
+	private float InstantiationTimer = 2f;
 
     // Working with the day system in GameController
     private GameObject GO;
@@ -49,28 +50,52 @@ public class SpawnController : MonoBehaviour {
         // Find gameobject with tag GameController
         GO = GameObject.FindGameObjectWithTag("GameController");
         GC = GO.GetComponent<GameController>();
-		Instantiate (avgJoe, new Vector3(-2,0,-6), Quaternion.identity);
-
+		/*
+		InstantiationTimer -= Time.deltaTime;
+		if (InstantiationTimer <= 0) {
+		
+			Instantiate (avgJoe, new Vector3 (-2, 0, -6), Quaternion.identity);
+			InstantiationTimer = 2f;
+		}
+*/
         if (GC.day == 0) {
             joeMax = 5;
+
         }
         if (GC.day == 1)
         {
-            joeMax = 8;
+			joeMax = 8;
+			// Call the spawn after a delay of the spawnTime and then continue to call after the same amount of time.
+			InvokeRepeating("Spawn", spawnTime,spawnTime);
+            
         }
         if (GC.day == 2)
         {
-            joeMax = 11;
+			joeMax = 11;
+			// Call the spawn after a delay of the spawnTime and then continue to call after the same amount of time.
+			InvokeRepeating("Spawn", spawnTime,spawnTime);
+           
         }
         if (GC.day == 3)
         {
-            joeMax = 14;
+			joeMax = 14;
+			// Call the spawn after a delay of the spawnTime and then continue to call after the same amount of time.
+			InvokeRepeating("Spawn", spawnTime,spawnTime);
+            
         }
-        if (GC.day == 17)
+        if (GC.day == 4)
         {
-            joeMax = 20;
+			joeMax = 20;
+			// Call the spawn after a delay of the spawnTime and then continue to call after the same amount of time.
+			InvokeRepeating("Spawn", spawnTime,spawnTime);
+            
         }
+		if (GC.day >= 5) {
+			joeMax++;
+			// Call the spawn after a delay of the spawnTime and then continue to call after the same amount of time.
+			InvokeRepeating("Spawn", spawnTime,spawnTime);
 
+		}
 
         // Call the spawn after a delay of the spawnTime and then continue to call after the same amount of time.
         InvokeRepeating("Spawn", spawnTime,spawnTime);

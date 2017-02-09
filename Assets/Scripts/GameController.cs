@@ -28,8 +28,10 @@ public class GameController : MonoBehaviour {
 
 	public int eggsPerBuy = 5;
 
+
 	// Use this for initialization
 	void Start () {
+		
 		this.secondsPerDay = 60;	//change this for final release!
 		this.money = 100;			//and this!
 		this.day = 0;
@@ -147,8 +149,9 @@ public class GameController : MonoBehaviour {
 				 * 
 				 * /
 				*/
-
-
+				//DestroyObject(GC1.gameObject);
+				//DestroyObject(GC2.gameObject);
+				//DestroyObject(GC3.gameObject);
 			}
 		}
 

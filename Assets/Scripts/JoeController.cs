@@ -17,6 +17,8 @@ public class JoeController : MonoBehaviour {
 		// approaches a destination point).
 		agent.autoBraking = false;
 
+
+
 		GotoNextPoint();
 	}
 
