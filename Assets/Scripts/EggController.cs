@@ -32,9 +32,24 @@ public class EggController : MonoBehaviour {
 
         if (other.gameObject.CompareTag("avgjoe"))
         {
-            Destroy(this.gameObject);
-			GC.addScore (111);
+			if (this.gameObject.CompareTag ("orgo"))
+				GC.addScore (50);
+			else
+				GC.addScore (10);
+			Destroy(this.gameObject);
         }
+
+		if (other.gameObject.CompareTag("hipjoe"))
+		{
+			Destroy(this.gameObject);
+			GC.addScore (10);
+		}
+
+		if (other.gameObject.CompareTag("skatejoe"))
+		{
+			Destroy(this.gameObject);
+			GC.addScore (30);
+		}
 
         if (other.gameObject.CompareTag("Egg"))
         {
