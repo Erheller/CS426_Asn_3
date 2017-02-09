@@ -7,7 +7,7 @@ public class SpawnController : MonoBehaviour {
 
     // Spawn 
 	public GameObject avgJoe; // the average joe
-    public GameObject wizardJoe; // Wizard joe
+   // public GameObject wizardJoe; // Wizard joe
     public GameObject hipsterJoe; // hipster joe
     public GameObject skateJoe; // skatejoe
 	public float spawnTime = 3f; // time to wait before spawning
@@ -27,14 +27,15 @@ public class SpawnController : MonoBehaviour {
 
         // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
 
-        int r = Random.Range(0,3);
+        int r = Random.Range(0,2);
         if(r == 0 )
             Instantiate(avgJoe, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
-        if(r == 1)
+        /*if(r == 1)
             Instantiate(wizardJoe, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
-        if (r == 2)
+     */    
+    if (r == 1)
             Instantiate(hipsterJoe, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
-        if (r == 3)
+        if (r == 2)
             Instantiate(skateJoe, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
 
         joeCounter++;
