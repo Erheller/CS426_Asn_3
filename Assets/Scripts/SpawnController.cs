@@ -4,21 +4,40 @@ using UnityEngine;
 
 public class SpawnController : MonoBehaviour {
 
-	public GameObject joe; // the joe prefab
+
+    // Spawn 
+	public GameObject avgJoe; // the average joe
+    public GameObject wizardJoe; // Wizard joe
+    public GameObject hipsterJoe; // hipster joe
+    public GameObject skateJoe; // skatejoe
 	public float spawnTime = 3f; // time to wait before spawning
 	public Transform[] spawnPoints;	// An array of the spawn points this enemy can spawn from.
 	private int joeCounter = 0;
-	private int joeMax = 7;
+	private int joeMax;
+   
 
-	// Spawn Joe
-	void Spawn()
+    // Working with the day system in GameController
+    private GameObject GO;
+    private GameController GC;
+    // Spawn Joe
+    void Spawn()
 	{
 		// Find a random index between zero and one less than number of spawn points.
 		int spawnPointIndex = Random.Range(0, spawnPoints.Length);
 
-		// Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
-		Instantiate(joe, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
-		joeCounter++;
+        // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
+
+        int r = Random.Range(0,3);
+        if(r == 0 )
+            Instantiate(avgJoe, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+        if(r == 1)
+            Instantiate(wizardJoe, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+        if (r == 2)
+            Instantiate(hipsterJoe, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+        if (r == 3)
+            Instantiate(skateJoe, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+
+        joeCounter++;
 		if (joeCounter >= joeMax)
 			CancelInvoke ("Spawn");
 	}
@@ -26,8 +45,33 @@ public class SpawnController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		// Call the spawn after a delay of the spawnTime and then continue to call after the same amount of time.
-		InvokeRepeating("Spawn", spawnTime,spawnTime);
+        // Find gameobject with tag GameController
+        GO = GameObject.FindGameObjectWithTag("GameController");
+        GC = GO.GetComponent<GameController>();
+
+        if (GC.day == 0) {
+            joeMax = 5;
+        }
+        if (GC.day == 1)
+        {
+            joeMax = 8;
+        }
+        if (GC.day == 2)
+        {
+            joeMax = 11;
+        }
+        if (GC.day == 3)
+        {
+            joeMax = 14;
+        }
+        if (GC.day == 17)
+        {
+            joeMax = 20;
+        }
+
+
+        // Call the spawn after a delay of the spawnTime and then continue to call after the same amount of time.
+        InvokeRepeating("Spawn", spawnTime,spawnTime);
 	}
 	
 	// Update is called once per frame
