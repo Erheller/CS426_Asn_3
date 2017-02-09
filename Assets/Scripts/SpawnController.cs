@@ -21,7 +21,7 @@ public class SpawnController : MonoBehaviour {
     private GameObject GO;
     private GameController GC;
     // Spawn Joe
-    void Spawn()
+    public void Spawn()
 	{
 		// Find a random index between zero and one less than number of spawn points.
 		int spawnPointIndex = Random.Range(0, spawnPoints.Length);
@@ -44,11 +44,52 @@ public class SpawnController : MonoBehaviour {
 			//stopSpawning(
 	}
 
-    void stopSpawning()
+    public void stopSpawning()
     {
         // 
         CancelInvoke("Spawn");
     }
+
+	public void updateDay() {
+		if (GC.day == 0) {
+			joeMax = 5;
+
+		}
+		if (GC.day == 1)
+		{
+			joeMax = 8;
+			// Call the spawn after a delay of the spawnTime and then continue to call after the same amount of time.
+			InvokeRepeating("Spawn", spawnTime,spawnTime);
+
+		}
+		if (GC.day == 2)
+		{
+			joeMax = 11;
+			// Call the spawn after a delay of the spawnTime and then continue to call after the same amount of time.
+			InvokeRepeating("Spawn", spawnTime,spawnTime);
+
+		}
+		if (GC.day == 3)
+		{
+			joeMax = 14;
+			// Call the spawn after a delay of the spawnTime and then continue to call after the same amount of time.
+			InvokeRepeating("Spawn", spawnTime,spawnTime);
+
+		}
+		if (GC.day == 4)
+		{
+			joeMax = 20;
+			// Call the spawn after a delay of the spawnTime and then continue to call after the same amount of time.
+			InvokeRepeating("Spawn", spawnTime,spawnTime);
+
+		}
+		if (GC.day >= 5) {
+			joeMax++;
+			// Call the spawn after a delay of the spawnTime and then continue to call after the same amount of time.
+			InvokeRepeating("Spawn", spawnTime,spawnTime);
+
+		}
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -64,47 +105,10 @@ public class SpawnController : MonoBehaviour {
 			InstantiationTimer = 2f;
 		}
 */
-        if (GC.day == 0) {
-            joeMax = 5;
 
-        }
-        if (GC.day == 1)
-        {
-			joeMax = 8;
-			// Call the spawn after a delay of the spawnTime and then continue to call after the same amount of time.
-			InvokeRepeating("Spawn", spawnTime,spawnTime);
-            
-        }
-        if (GC.day == 2)
-        {
-			joeMax = 11;
-			// Call the spawn after a delay of the spawnTime and then continue to call after the same amount of time.
-			InvokeRepeating("Spawn", spawnTime,spawnTime);
-           
-        }
-        if (GC.day == 3)
-        {
-			joeMax = 14;
-			// Call the spawn after a delay of the spawnTime and then continue to call after the same amount of time.
-			InvokeRepeating("Spawn", spawnTime,spawnTime);
-            
-        }
-        if (GC.day == 4)
-        {
-			joeMax = 20;
-			// Call the spawn after a delay of the spawnTime and then continue to call after the same amount of time.
-			InvokeRepeating("Spawn", spawnTime,spawnTime);
-            
-        }
-		if (GC.day >= 5) {
-			joeMax++;
-			// Call the spawn after a delay of the spawnTime and then continue to call after the same amount of time.
-			InvokeRepeating("Spawn", spawnTime,spawnTime);
-
-		}
 
         // Call the spawn after a delay of the spawnTime and then continue to call after the same amount of time.
-        InvokeRepeating("Spawn", spawnTime,spawnTime);
+        //InvokeRepeating("Spawn", spawnTime,spawnTime);
 	}
 	
 	// Update is called once per frame

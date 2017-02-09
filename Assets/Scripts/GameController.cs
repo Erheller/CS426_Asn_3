@@ -28,6 +28,8 @@ public class GameController : MonoBehaviour {
 
 	public int eggsPerBuy = 5;
 
+	public SpawnController SC;
+	private GameObject[] to_delete;
 
 	// Use this for initialization
 	void Start () {
@@ -40,11 +42,12 @@ public class GameController : MonoBehaviour {
 
 		DontDestroyOnLoad (this);
 
-
+		SC = this.GetComponent<SpawnController> ();
 
 
 		this.updateUI ();
-
+		this.killJoe ();
+		SC.stopSpawning ();
 	}
 
 	void updateUI() {
@@ -120,10 +123,33 @@ public class GameController : MonoBehaviour {
 		this.shopping = false;
 		this.day += 1;
 		UIController.hidePaused();
+		SC.updateDay ();
+		SC.Spawn ();
+
+	}
+
+	private void killJoe() {
+		to_delete = GameObject.FindGameObjectsWithTag("avgjoe");
+		foreach (GameObject joe in to_delete) {
+			Destroy (joe.gameObject);
+		}
+
+		to_delete = GameObject.FindGameObjectsWithTag("hipjoe");
+		foreach (GameObject joe in to_delete) {
+			Destroy (joe.gameObject);
+		}
+
+		to_delete = GameObject.FindGameObjectsWithTag("skatejoe");
+		foreach (GameObject joe in to_delete) {
+			Destroy (joe.gameObject);
+		}
 	}
 
 	// Update is called once per frame
 	void Update () {
+		//SC.stopSpawning ();
+
+
 		/*
 		if (this.secondsLeft >= 0)
 			this.shopping = false;
@@ -139,6 +165,27 @@ public class GameController : MonoBehaviour {
 				this.shopping = true;
 				UIController.showPaused ();
 
+
+				SC.stopSpawning ();
+
+				/*
+				to_delete = GameObject.FindGameObjectsWithTag("avgjoe");
+				foreach (GameObject joe in to_delete) {
+					Destroy (joe.gameObject);
+				}
+
+				to_delete = GameObject.FindGameObjectsWithTag("hipjoe");
+				foreach (GameObject joe in to_delete) {
+					Destroy (joe.gameObject);
+				}
+
+				to_delete = GameObject.FindGameObjectsWithTag("skatejoe");
+				foreach (GameObject joe in to_delete) {
+					Destroy (joe.gameObject);
+				}
+				*/
+
+				this.killJoe ();
 
 				/*
 				 * 
