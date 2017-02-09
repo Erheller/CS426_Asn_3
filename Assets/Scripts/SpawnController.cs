@@ -40,8 +40,8 @@ public class SpawnController : MonoBehaviour {
             Instantiate(skateJoe, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
 
         joeCounter++;
-		if (joeCounter >= joeMax)
-			CancelInvoke ("Spawn");
+		//if (joeCounter >= joeMax)
+		//	CancelInvoke ("Spawn");
 	}
 
 	// Use this for initialization
